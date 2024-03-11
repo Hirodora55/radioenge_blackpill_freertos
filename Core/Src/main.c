@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
+// teste 11/03 as 14:46
 //teste push github 04/03/2024 as 15:22
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
