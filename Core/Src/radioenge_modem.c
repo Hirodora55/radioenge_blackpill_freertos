@@ -17,11 +17,16 @@ extern osTimerId_t ModemLedTimerHandle;
 extern osMessageQueueId_t uartQueueHandle;
 extern osTimerId_t DutyCycleTimerHandle;
 
-#define NUMBER_OF_STRINGS (2)
+#define NUMBER_OF_STRINGS (7)
 #define STRING_LENGTH (255)
 char gConfigCmds[NUMBER_OF_STRINGS][STRING_LENGTH + 1] = {
-    "AT\r\n",
-    "AT\r\n"
+    "AT+CFM=0\r\n",
+    "AT+APPKEY=d0:6f:c0:71:01:2f:2d:3d:4a:6e:d2:fb:8c:0e:6a:ef\r\n",
+    "AT+APPEUI=00:00:00:00:00:00:00:00\r\n",
+    "AT+CHMASK=0000:00FF:0000:0000:0004:0000\r\n",
+    "AT+ADR=1\r\n",
+    "AT+NJM=1\r\n",
+    "AT+JOIN\r\n"
     };
 
 
@@ -207,7 +212,8 @@ uint8_t gSendBuffer[OUT_BUFFER_SIZE+16];
 osStatus_t LoRaSend(uint32_t LoraWANPort,uint8_t* msg)
 {   
     LoRaWaitDutyCycle();
-    return LoRaSendNow(LoraWANPort,msg);    
+    return LoRaSendNow(LoraWANPort,msg); 
+  
 }
 
 size_t bin_encode(void* in, size_t in_size, uint8_t* out, size_t max_out_size)

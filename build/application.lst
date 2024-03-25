@@ -1,0 +1,294 @@
+ARM GAS  C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 6
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"application.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/application.c"
+  20              		.section	.text.LoRaWAN_RxEventCallback,"ax",%progbits
+  21              		.align	1
+  22              		.global	LoRaWAN_RxEventCallback
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	LoRaWAN_RxEventCallback:
+  28              	.LFB220:
+   1:Core/Src/application.c **** #include "cmsis_os.h"
+   2:Core/Src/application.c **** #include "stm32f4xx_hal.h"
+   3:Core/Src/application.c **** #include "radioenge_modem.h"
+   4:Core/Src/application.c **** 
+   5:Core/Src/application.c **** extern osTimerId_t PeriodicSendTimerHandle;
+   6:Core/Src/application.c **** extern osThreadId_t AppSendTaskHandle;
+   7:Core/Src/application.c **** extern ADC_HandleTypeDef hadc1;
+   8:Core/Src/application.c **** extern osEventFlagsId_t ModemStatusFlagsHandle;
+   9:Core/Src/application.c **** extern TIM_HandleTypeDef htim3;
+  10:Core/Src/application.c **** 
+  11:Core/Src/application.c **** void LoRaWAN_RxEventCallback(uint8_t *data, uint32_t length, uint32_t port, int32_t rssi, int32_t s
+  12:Core/Src/application.c **** {
+  29              		.loc 1 12 1
+  30              		.cfi_startproc
+  31              		@ args = 4, pretend = 0, frame = 16
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 80B4     		push	{r7}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 7, -4
+  38 0002 85B0     		sub	sp, sp, #20
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 24
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 F860     		str	r0, [r7, #12]
+  45 0008 B960     		str	r1, [r7, #8]
+  46 000a 7A60     		str	r2, [r7, #4]
+ARM GAS  C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s 			page 2
+
+
+  47 000c 3B60     		str	r3, [r7]
+  13:Core/Src/application.c **** }
+  48              		.loc 1 13 1
+  49 000e 00BF     		nop
+  50 0010 1437     		adds	r7, r7, #20
+  51              	.LCFI3:
+  52              		.cfi_def_cfa_offset 4
+  53 0012 BD46     		mov	sp, r7
+  54              	.LCFI4:
+  55              		.cfi_def_cfa_register 13
+  56              		@ sp needed
+  57 0014 5DF8047B 		ldr	r7, [sp], #4
+  58              	.LCFI5:
+  59              		.cfi_restore 7
+  60              		.cfi_def_cfa_offset 0
+  61 0018 7047     		bx	lr
+  62              		.cfi_endproc
+  63              	.LFE220:
+  65              		.section	.text.PeriodicSendTimerCallback,"ax",%progbits
+  66              		.align	1
+  67              		.global	PeriodicSendTimerCallback
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  72              	PeriodicSendTimerCallback:
+  73              	.LFB221:
+  14:Core/Src/application.c **** 
+  15:Core/Src/application.c **** void PeriodicSendTimerCallback(void *argument)
+  16:Core/Src/application.c **** {
+  74              		.loc 1 16 1
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 8
+  77              		@ frame_needed = 1, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79 0000 80B4     		push	{r7}
+  80              	.LCFI6:
+  81              		.cfi_def_cfa_offset 4
+  82              		.cfi_offset 7, -4
+  83 0002 83B0     		sub	sp, sp, #12
+  84              	.LCFI7:
+  85              		.cfi_def_cfa_offset 16
+  86 0004 00AF     		add	r7, sp, #0
+  87              	.LCFI8:
+  88              		.cfi_def_cfa_register 7
+  89 0006 7860     		str	r0, [r7, #4]
+  17:Core/Src/application.c **** }
+  90              		.loc 1 17 1
+  91 0008 00BF     		nop
+  92 000a 0C37     		adds	r7, r7, #12
+  93              	.LCFI9:
+  94              		.cfi_def_cfa_offset 4
+  95 000c BD46     		mov	sp, r7
+  96              	.LCFI10:
+  97              		.cfi_def_cfa_register 13
+  98              		@ sp needed
+  99 000e 5DF8047B 		ldr	r7, [sp], #4
+ 100              	.LCFI11:
+ARM GAS  C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s 			page 3
+
+
+ 101              		.cfi_restore 7
+ 102              		.cfi_def_cfa_offset 0
+ 103 0012 7047     		bx	lr
+ 104              		.cfi_endproc
+ 105              	.LFE221:
+ 107              		.section	.rodata
+ 108              		.align	2
+ 109              	.LC0:
+ 110 0000 54656D70 		.ascii	"Temperature: %2d.%2d\000"
+ 110      65726174 
+ 110      7572653A 
+ 110      20253264 
+ 110      2E253264 
+ 111              		.section	.text.AppSendTaskCode,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	AppSendTaskCode
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	AppSendTaskCode:
+ 119              	.LFB222:
+  18:Core/Src/application.c **** 
+  19:Core/Src/application.c **** void AppSendTaskCode(void *argument)
+  20:Core/Src/application.c **** {
+ 120              		.loc 1 20 1
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 80
+ 123              		@ frame_needed = 1, uses_anonymous_args = 0
+ 124 0000 90B5     		push	{r4, r7, lr}
+ 125              	.LCFI12:
+ 126              		.cfi_def_cfa_offset 12
+ 127              		.cfi_offset 4, -12
+ 128              		.cfi_offset 7, -8
+ 129              		.cfi_offset 14, -4
+ 130 0002 95B0     		sub	sp, sp, #84
+ 131              	.LCFI13:
+ 132              		.cfi_def_cfa_offset 96
+ 133 0004 00AF     		add	r7, sp, #0
+ 134              	.LCFI14:
+ 135              		.cfi_def_cfa_register 7
+ 136 0006 7860     		str	r0, [r7, #4]
+ 137              	.L4:
+ 138              	.LBB2:
+  21:Core/Src/application.c ****     /* USER CODE BEGIN 5 */
+  22:Core/Src/application.c ****     /* Infinite loop */
+  23:Core/Src/application.c ****     uint32_t read;
+  24:Core/Src/application.c ****     int32_t temp;
+  25:Core/Src/application.c ****     uint8_t sendStr[64];
+  26:Core/Src/application.c **** 
+  27:Core/Src/application.c ****     while (1)
+  28:Core/Src/application.c ****     {
+  29:Core/Src/application.c ****         HAL_ADC_Start(&hadc1);
+ 139              		.loc 1 29 9
+ 140 0008 2148     		ldr	r0, .L5
+ 141 000a FFF7FEFF 		bl	HAL_ADC_Start
+  30:Core/Src/application.c ****         HAL_ADC_PollForConversion(&hadc1, 100);
+ 142              		.loc 1 30 9
+ARM GAS  C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s 			page 4
+
+
+ 143 000e 6421     		movs	r1, #100
+ 144 0010 1F48     		ldr	r0, .L5
+ 145 0012 FFF7FEFF 		bl	HAL_ADC_PollForConversion
+  31:Core/Src/application.c ****         read = HAL_ADC_GetValue(&hadc1);
+ 146              		.loc 1 31 16
+ 147 0016 1E48     		ldr	r0, .L5
+ 148 0018 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 149 001c F864     		str	r0, [r7, #76]
+  32:Core/Src/application.c ****         temp = (int32_t)(33000 * ((float)read / 4096));
+ 150              		.loc 1 32 35
+ 151 001e FB6C     		ldr	r3, [r7, #76]
+ 152 0020 07EE903A 		vmov	s15, r3	@ int
+ 153 0024 B8EE677A 		vcvt.f32.u32	s14, s15
+ 154              		.loc 1 32 47
+ 155 0028 DFED1A6A 		vldr.32	s13, .L5+4
+ 156 002c C7EE267A 		vdiv.f32	s15, s14, s13
+ 157              		.loc 1 32 32
+ 158 0030 9FED197A 		vldr.32	s14, .L5+8
+ 159 0034 67EE877A 		vmul.f32	s15, s15, s14
+ 160              		.loc 1 32 14
+ 161 0038 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 162 003c 17EE903A 		vmov	r3, s15	@ int
+ 163 0040 BB64     		str	r3, [r7, #72]
+  33:Core/Src/application.c ****         sprintf(sendStr, "Temperature: %2d.%2d", temp / 100, temp % 100);
+ 164              		.loc 1 33 9
+ 165 0042 BB6C     		ldr	r3, [r7, #72]
+ 166 0044 154A     		ldr	r2, .L5+12
+ 167 0046 82FB0312 		smull	r1, r2, r2, r3
+ 168 004a 5211     		asrs	r2, r2, #5
+ 169 004c DB17     		asrs	r3, r3, #31
+ 170 004e D41A     		subs	r4, r2, r3
+ 171 0050 BB6C     		ldr	r3, [r7, #72]
+ 172 0052 124A     		ldr	r2, .L5+12
+ 173 0054 82FB0312 		smull	r1, r2, r2, r3
+ 174 0058 5111     		asrs	r1, r2, #5
+ 175 005a DA17     		asrs	r2, r3, #31
+ 176 005c 8A1A     		subs	r2, r1, r2
+ 177 005e 6421     		movs	r1, #100
+ 178 0060 01FB02F2 		mul	r2, r1, r2
+ 179 0064 9A1A     		subs	r2, r3, r2
+ 180 0066 07F10800 		add	r0, r7, #8
+ 181 006a 1346     		mov	r3, r2
+ 182 006c 2246     		mov	r2, r4
+ 183 006e 0C49     		ldr	r1, .L5+16
+ 184 0070 FFF7FEFF 		bl	sprintf
+  34:Core/Src/application.c ****         LoRaWaitDutyCycle();
+ 185              		.loc 1 34 9
+ 186 0074 FFF7FEFF 		bl	LoRaWaitDutyCycle
+  35:Core/Src/application.c ****         LoRaSendNow(3, sendStr);
+ 187              		.loc 1 35 9
+ 188 0078 07F10803 		add	r3, r7, #8
+ 189 007c 1946     		mov	r1, r3
+ 190 007e 0320     		movs	r0, #3
+ 191 0080 FFF7FEFF 		bl	LoRaSendNow
+  36:Core/Src/application.c ****         osDelay(30000);
+ 192              		.loc 1 36 9 discriminator 1
+ 193 0084 47F23050 		movw	r0, #30000
+ARM GAS  C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s 			page 5
+
+
+ 194 0088 FFF7FEFF 		bl	osDelay
+ 195              	.LBE2:
+  28:Core/Src/application.c ****         HAL_ADC_Start(&hadc1);
+ 196              		.loc 1 28 5
+ 197 008c 00BF     		nop
+ 198 008e BBE7     		b	.L4
+ 199              	.L6:
+ 200              		.align	2
+ 201              	.L5:
+ 202 0090 00000000 		.word	hadc1
+ 203 0094 00008045 		.word	1166016512
+ 204 0098 00E80047 		.word	1191241728
+ 205 009c 1F85EB51 		.word	1374389535
+ 206 00a0 00000000 		.word	.LC0
+ 207              		.cfi_endproc
+ 208              	.LFE222:
+ 210              		.text
+ 211              	.Letext0:
+ 212              		.file 2 "C:/tools/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include/m
+ 213              		.file 3 "C:/tools/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/include/s
+ 214              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 215              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"
+ 216              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 217              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 218              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 219              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 220              		.file 10 "Core/Inc/radioenge_modem.h"
+ 221              		.file 11 "<built-in>"
+ARM GAS  C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 application.c
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:21     .text.LoRaWAN_RxEventCallback:00000000 $t
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:27     .text.LoRaWAN_RxEventCallback:00000000 LoRaWAN_RxEventCallback
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:66     .text.PeriodicSendTimerCallback:00000000 $t
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:72     .text.PeriodicSendTimerCallback:00000000 PeriodicSendTimerCallback
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:108    .rodata:00000000 $d
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:112    .text.AppSendTaskCode:00000000 $t
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:118    .text.AppSendTaskCode:00000000 AppSendTaskCode
+C:\Users\DAELT-~1\AppData\Local\Temp\ccxfq4yZ.s:202    .text.AppSendTaskCode:00000090 $d
+
+UNDEFINED SYMBOLS
+HAL_ADC_Start
+HAL_ADC_PollForConversion
+HAL_ADC_GetValue
+sprintf
+LoRaWaitDutyCycle
+LoRaSendNow
+osDelay
+hadc1
